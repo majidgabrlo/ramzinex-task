@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import moon from "../assets/moon.svg";
-import sun from "../assets/sun.svg";
+import SvgIcon from "../kit/SVGIcon";
+import classNames from "classnames";
+
 
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -22,13 +23,16 @@ const DarkModeToggle = () => {
   }, [darkMode]);
 
   return (
-    <img
-      className="cursor-pointer"
+    <div
+      className="cursor-pointer m-auto"
       onClick={() => {
         setDarkMode(!darkMode);
       }}
-      src={darkMode ? sun : moon}
-    />
+    >
+     <SvgIcon className={classNames({
+      "fill-white":darkMode
+     })} name={darkMode ? "sun" : "moon"} />
+    </div>
   );
 };
 

@@ -1,22 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setLocale } from "../store/localizationSlice";
+import SvgIcon from "../kit/SVGIcon";
+import TextBox from "../kit/TextBox";
 import DarkModeToggle from "./DarkModeToggle";
-import TextBox from "./TextBox";
-import { useTranslation } from "../locales/i18n";
-import type { RootState } from "../store";
-const Header = () => {
-  const dispatch = useDispatch();
-  const locale = useSelector((state: RootState) => state.locale.localization);
-  const { t } = useTranslation();
 
+const Header = () => {
   return (
     <div className="flex gap-x-2">
-      <TextBox />
+      <TextBox icon={<SvgIcon name="search" className="stroke-black fill-none dark:stroke-white" />} />
       <DarkModeToggle />
-      {t("welcome")}
-      <div onClick={() => dispatch(setLocale(locale === "en" ? "fa" : "en"))}>
-        ads
-      </div>
     </div>
   );
 };

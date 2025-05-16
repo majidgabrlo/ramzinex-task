@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import en from "./langs/en";
 import fa from "./langs/fa";
-import type { RootState } from "../store";
+import type { RootState } from "../stores";
 
 export const resources = {
   en,

@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { useSelector } from "react-redux";
-import type { RootState } from "../store";
+import type { RootState } from "../stores";
 
 const RTLProvider = ({ children }: { children: ReactNode }) => {
   const localization = useSelector(
