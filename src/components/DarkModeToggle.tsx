@@ -5,8 +5,10 @@ import sun from "../assets/sun.svg";
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) return savedTheme === "dark";
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (savedTheme) {
+      return savedTheme === "dark";
+    }
+    return false;
   });
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const DarkModeToggle = () => {
       onClick={() => {
         setDarkMode(!darkMode);
       }}
-      src={darkMode ? sun : moon }
+      src={darkMode ? sun : moon}
     />
   );
 };
