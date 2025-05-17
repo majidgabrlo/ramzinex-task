@@ -8,5 +8,8 @@ body {
 svg *{
   stroke: inherit !important;
 }
+svg{
+  rotate: inherit;
+}
 
 @custom-variant dark (&:where(.dark, .dark *));

@@ -30,7 +30,8 @@ const DarkModeToggle = () => {
       }}
     >
      <SvgIcon className={classNames({
-      "fill-white":darkMode
+      "fill-white":darkMode,
+      "fill-none stroke-black":!darkMode
      })} name={darkMode ? "sun" : "moon"} />
     </div>
   );

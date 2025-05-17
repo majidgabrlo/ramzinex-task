@@ -7,7 +7,7 @@ interface LocalizationState {
 }
 
 const initialState: LocalizationState = {
-  localization: "fa",
+  localization: (localStorage.getItem("lang") as "fa") || "fa",
 };
 
 const localizationSlice = createSlice({
@@ -16,6 +16,7 @@ const localizationSlice = createSlice({
   reducers: {
     setLocale(state, action: PayloadAction<Localization>) {
       state.localization = action.payload;
+      localStorage.setItem("lang", action.payload);
     },
   },
 });
