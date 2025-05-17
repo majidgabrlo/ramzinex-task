@@ -13,15 +13,22 @@ const Detail = () => {
   const { t } = useTranslation();
   const locale = useSelector((state: RootState) => state.locale.localization);
 
-  const { data, isLoading: isGettingPairs } = useGetPairByIdQuery(id!, {
+  const {
+    data,
+    isLoading: isGettingPairs,
+    isError: getPairIdError,
+  } = useGetPairByIdQuery(id!, {
     pollingInterval: 20000,
     skip: !id,
   });
-  const { data: pairStats, isLoading: isGettingPairStats } =
-    useGetPairStatsQuery(id!, {
-      pollingInterval: 20000,
-      skip: !id,
-    });
+  const {
+    data: pairStats,
+    isLoading: isGettingPairStats,
+    isError: getPairStatsError,
+  } = useGetPairStatsQuery(id!, {
+    pollingInterval: 20000,
+    skip: !id,
+  });
   const pair = data?.data?.pair;
   if (isGettingPairStats || isGettingPairs) {
     return (
@@ -30,6 +37,14 @@ const Detail = () => {
       </div>
     );
   }
+  if (getPairIdError || getPairStatsError) {
+    return (
+      <div className="flex-grow flex justify-center py-4 text-red-400">
+        {t("somethingWentWrong")}
+      </div>
+    );
+  }
+
   return (
     <div className="flex-grow flex flex-col">
       <div className="flex-grow">

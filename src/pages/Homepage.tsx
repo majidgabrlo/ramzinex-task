@@ -15,11 +15,11 @@ import Header from "../components/Header";
 
 const Homepage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { data: pairs, isLoading: isGettingPairs } = useGetPairsQuery(
+  const { data: pairs, isLoading: isGettingPairs,isError:getPairError } = useGetPairsQuery(
     undefined,
     { pollingInterval: 20000 }
   );
-  const { data: trades, isLoading: isGettingTrades } = useGetAllTradesQuery(
+  const { data: trades, isLoading: isGettingTrades,isError:getTradeError } = useGetAllTradesQuery(
     undefined,
     { pollingInterval: 20000 }
   );
@@ -104,6 +104,12 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+
+      {(getPairError || getTradeError) && (
+        <div className="flex justify-center py-4 text-red-400">
+          {t('somethingWentWrong')}
+        </div>
+      )}
       {(isGettingPairs || isGettingTrades) && (
         <div className="flex justify-center py-4">
           <Spinner />

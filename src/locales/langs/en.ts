@@ -6,5 +6,6 @@ export default {
   price: "Price",
   changes24h: "Changes 24 hours",
   tradesAmount: "Trade amount",
-  back:"Back"
+  back:"Back",
+  somethingWentWrong:"Something went wrong",
 };

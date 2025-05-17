@@ -6,5 +6,7 @@ export default {
   price: "قیمت",
   changes24h: "تغییرات 24 ساعته",
   tradesAmount: "حجم معاملاتی",
-  back:"بازگشت"
+  back:"بازگشت",
+  somethingWentWrong:"خطایی رخ داد",
+
 };
